@@ -18,15 +18,31 @@ class RegistrationPage {
   }
 
   scrollTermsToBottom() {
-    cy.get('[data-qa="terms-and-conditions"]')
-      .should("be.visible")
-      .scrollTo("bottom", { duration: 500 });
+    cy.get('[data-qa="terms-and-conditions"]').should("be.visible");
+
+    cy.window().then((win) => {
+      const el =
+        win.document.querySelector(".RegistrationModal_termsWrap__t8wal") ||
+        win.document.querySelector(".RegistrationModal_termsContent___ViRI");
+      if (!el) return;
+
+      const step = 200;
+      const totalSteps = Math.ceil(el.scrollHeight / step);
+      let i = 0;
+
+      const interval = setInterval(() => {
+        el.scrollTop += step;
+        el.dispatchEvent(new win.Event("scroll"));
+        el.dispatchEvent(new win.WheelEvent("wheel", { deltaY: step }));
+        if (++i >= totalSteps) clearInterval(interval);
+      }, 100);
+    });
+
+    cy.wait(20000); // wait long enough for UI to unlock checkbox
   }
 
   acceptTerms() {
-    cy.get('[data-qa="signup_checkbox"]')
-      .should("be.visible")
-      .click({ force: true });
+    cy.get('[data-qa="signup_checkbox"]').click({ force: true });
   }
 
   submitFinal() {

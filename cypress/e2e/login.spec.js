@@ -1,5 +1,4 @@
 import LoginPage from "../support/pages/loginPage.js";
-import "../support/commands.js";
 import { defaultPassword, defaultUsername } from "../support/commands.js";
 
 describe("Playjack Login", () => {

@@ -1,5 +1,4 @@
 import RegistrationPage from "../support/pages/registrationPage.js";
-import "../support/commands.js";
 import {
   generateUsername,
   generateEmail,
