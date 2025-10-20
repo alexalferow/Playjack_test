@@ -9,7 +9,6 @@ describe("Playjack Login", () => {
     LoginPage.visit();
     LoginPage.openLoginForm();
     LoginPage.login(username, password);
-
-    cy.get('[data-qa="buy_coins"]').should("be.visible");
+    LoginPage.verifyLoginSuccess();
   });
 });

@@ -8,9 +8,9 @@ class RegistrationPage {
   }
 
   fillForm(username, email, password) {
-    cy.get('[data-qa="signup_username"]').type(username);
-    cy.get('[data-qa="signup_email"]').type(email);
-    cy.get('[data-qa="signup_password"]').type(password);
+    cy.get('[data-qa="signup_username"]').should("be.visible").type(username);
+    cy.get('[data-qa="signup_email"]').should("be.visible").type(email);
+    cy.get('[data-qa="signup_password"]').should("be.visible").type(password);
   }
 
   submitInitial() {
@@ -46,7 +46,19 @@ class RegistrationPage {
   }
 
   submitFinal() {
-    cy.get('[data-qa="signup_submit_btn"]').click();
+    cy.get('[data-qa="terms-and-conditions"]')
+      .find('[data-qa="signup_submit_btn"]')
+      .click({ force: true });
+    cy.wait(5000); // wait for registration to process
+  }
+
+  closeBonus() {
+    cy.get('[data-qa="welcome-gift"]').should("be.visible");
+    cy.get('[data-qa="gift-modal-close"]').first().click();
+  }
+
+  verifyRegistrationSuccess() {
+    cy.get('[data-qa="buy_coins"]').should("be.visible");
   }
 
   registerNewUser(username, email, password) {

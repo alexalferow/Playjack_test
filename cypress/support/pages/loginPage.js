@@ -12,6 +12,10 @@ class LoginPage {
     cy.get('[data-qa="login_password"]').type(password);
     cy.get('[data-qa="login_submit_btn"]').click();
   }
+
+  verifyLoginSuccess() {
+    cy.get('[data-qa="buy_coins"]').should("be.visible");
+  }
 }
 
 export default new LoginPage();

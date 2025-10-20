@@ -12,7 +12,7 @@ describe("Playjack Registration", () => {
     const password = defaultPassword;
 
     RegistrationPage.registerNewUser(username, email, password);
-
-    cy.get('[data-qa="buy_coins"]').should("be.visible");
+    RegistrationPage.closeBonus();
+    RegistrationPage.verifyRegistrationSuccess();
   });
 });
