@@ -2,10 +2,12 @@
   "name": "playjack_test",
   "version": "1.0.0",
   "main": "index.js",
-
-  "scripts": {
-    "test:headed": "cypress open",
-    "test:chrome": "cypress run --browser chrome"
+ "scripts": {
+  "test": "npx cypress run --browser chrome",
+  "test:headed": "npx cypress run --browser chrome --headed",
+  "test:chrome": "npx cypress run --browser chrome",
+  "test:open": "npx cypress open"
+    
   },
   "keywords": [],
   "author": "",
