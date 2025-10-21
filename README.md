@@ -1,6 +1,6 @@
 # Playjack Cypress Test Project
 
-This project contains tests for Playjack using Cypress.
+This project contains E2E tests for Playjack using Cypress.
 
 ## Setup
 
